@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function pulaLinha() {
+            document.write("<br><hr><br>");
+        }
+
+        function mostra(frase) {
+            document.write(frase);
+            pulaLinha();
+        }
+
+        function calculaImc(peso, altura) {
+            return peso / (altura * altura); 
+        }
+
+        function resultadoImc() {
+            if (imc < 18.5) {
+                mostra("Você está abaixo do peso");
+            } else if (imc >= 18.5 && imc < 25) {
+                mostra("Você está com peso ideal");
+            } else if (imc >= 25 && imc < 30) {
+                mostra("Você está com sobrepeso");
+            } else {
+                mostra("Você está com obesidade");
+            }
+        }
+
+        var nome = prompt("Informe seu nome:");
+        var peso = parseFloat(prompt(nome + ", digite seu peso:"));
+        var altura = parseFloat(prompt(nome + ", digite sua altura:"));
+
+        var imc = calculaImc(peso, altura);
+
+        mostra(nome + ", o seu IMC é " + Math.round(imc * 100)/100 );
+        resultadoImc();
+
+    </script>
+</body>
+</html>
