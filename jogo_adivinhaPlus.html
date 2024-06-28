@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdivinhaPlus</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Jogo do Número Secreto</h1>
+    
+    <h4>Digite seu chute</h4>
+    <input>
+    <br><br>
+    <button>Descubra</button>
+
+    <script>
+        
+        function sorteia() {
+            return Math.round(Math.random() * 10);
+        }
+
+        function sorteiaNumeros(quantidade) {
+            var numerosSecretos = [];
+            var numero = 1;
+            
+            while (numero <= quantidade) {
+                var numeroAleatorio = sorteia();
+                
+                if (numeroAleatorio !== 0) {
+                    var achou = false;
+
+                    for (var i = 0; i < numerosSecretos.length; i++) {
+                        if (numerosSecretos[i] == numeroAleatorio){
+                            achou = true;
+                            break;
+                        }
+                    }
+
+                    if (achou == false){
+                        numerosSecretos.push(numeroAleatorio);
+                        numero++;
+                    }
+                }
+            }
+            return numerosSecretos;
+        }
+        
+        var numerosSecretos = sorteiaNumeros(3);
+        var chute = document.querySelector("input");
+        var botaoDescubra = document.querySelector("button");
+        
+        chute.focus();
+
+        function verifica() {
+            var achou = false;
+
+            for (var i = 0; i < numerosSecretos.length; i++){
+                if (chute.value == numerosSecretos[i]) {
+                    alert("Parabéns!! Você acertou o número secreto!");
+                    achou = true;
+                    break;
+                }
+            }
+
+            if (achou == false) {
+                alert("Você errou! Tente novamente.");
+            }
+
+            chute.value = "";
+            chute.focus();
+        }
+
+        botaoDescubra.onclick = verifica;
+        
+    </script>
+</body>
+</html>

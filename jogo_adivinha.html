@@ -22,9 +22,10 @@
         }
 
         var numeroSecreto = sorteia(9);
+        var tentativas = 3;
         console.log(numeroSecreto);
 
-        while (chute != numeroSecreto) {
+        for (var i = 0; i < tentativas; i++) {
             var chute = parseInt(prompt("Digite seu chute"));
 
             if (chute == numeroSecreto) {
